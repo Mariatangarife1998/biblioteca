@@ -1,5 +1,9 @@
 <?php
-
+//el modelfactory replobla la base de datos con data ficticia y no verdadera//
+//que nos va a permitir llenar la BD para la realizacion de pruebas,// 
+//visualizar paginaciones etc//
+//para crear un nuevo Factory pasamos el comando php artisan make:factory //
+//y luego el factory que vamos a craer en este caso es PermisoFactory//
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\User;

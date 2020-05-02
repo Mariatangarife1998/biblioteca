@@ -43,7 +43,7 @@ class CreateUsuarioTable extends Migration
             //serian usuario y 50//
             $table->string('usuario', 50);
             $table->string('password', 100);
-            $table->string('nombre', 50);
+            $table->string('nombre', 50)->unique();
             $table->timestamps();
             //con este comando puedo eliminar los datos que ya he introducido en la BD php artisan migrate:refresh//
         });
