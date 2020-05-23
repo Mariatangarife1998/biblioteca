@@ -41,6 +41,8 @@ use Illuminate\Support\Facades\Route;
 // })->where('nombre', '[A-Za-z]+')->name('Permiso');
 
 //en esta ruta nuestra url permite caracteres de tipo number//
-Route::get('permiso/{nombre}', function ($nombre) {
-    return $nombre;
-})->where('nombre', '[0-9]+')->name('Permiso');
+// Route::get('permiso/{nombre}', function ($nombre) {
+//     return $nombre;
+// })->where('nombre', '[0-9]+')->name('Permiso');
+
+Route::get('/', 'InicioController@index');
