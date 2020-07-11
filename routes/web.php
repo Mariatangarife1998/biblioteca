@@ -1,8 +1,4 @@
 <?php
-
-use App\Models\Permiso;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,13 +32,25 @@ use Illuminate\Support\Facades\Route;
 
 
 //en esta ruta se cumplen con parametros espesificos de tipo varchar este solo recibe caracter alfabetico//
-// Route::get('permiso/{nombre}', function ($nombre) {
-//     return $nombre;
-// })->where('nombre', '[A-Za-z]+')->name('Permiso');
+// Route::get('permiso/{nombre}', function ($nombre) {//
+//     return $nombre;//
+// })->where('nombre', '[A-Za-z]+')->name('Permiso');//
 
 //en esta ruta nuestra url permite caracteres de tipo number//
-// Route::get('permiso/{nombre}', function ($nombre) {
-//     return $nombre;
-// })->where('nombre', '[0-9]+')->name('Permiso');
+// Route::get('permiso/{nombre}', function ($nombre) {//
+//     return $nombre;//
+// })->where('nombre', '[0-9]+')->name('Permiso');//
 
+// Route::get('admin/permiso', 'Admin/PermisoController@index')->name('permiso');//
+
+//de esta manera es posiblecachear las rutas// 
 Route::get('/', 'InicioController@index');
+//con este codigo no podriamos cachear las rutas por el function//
+Route::group(['prefix'=>'admin','namespace'=>'Admin'], function(){
+    Route::get('permiso', 'PermisoController@Index')->name('permiso');
+    Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
+    Route::get('menu', 'MenuController@crear')->name ('menu');
+    Route::get('menu/crear', 'MenuController@crear')->name('crear_menu');
+    Route::POST('menu', 'MenuController@guardar')->name('guardar_menu');
+   
+});

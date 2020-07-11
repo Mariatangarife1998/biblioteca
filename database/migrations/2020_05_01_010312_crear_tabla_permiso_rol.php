@@ -14,7 +14,6 @@ class CrearTablaPermisoRol extends Migration
     public function up()
     {
         Schema::create('permiso_rol', function (Blueprint $table) {
-            $table->id();
             $table->boolean('estado');
             //para crear las relaciones entre las foreing key de dos tablas relacionadas lo hacemos de la siguiente manera// 
             //primero realizamos el unsignedinteger//
@@ -23,8 +22,9 @@ class CrearTablaPermisoRol extends Migration
             //segundo creamos la realacion de estas dos tablan con el foreign//
             $table->foreign('rol_id', 'fk_usuariorol_rol')->references ('id')->on('rol')->onDelete('restrict')->onUpdate('restrict');
             $table->unsignedInteger('permiso_id');
-            $table->foreign('permiso_id', 'fk_permisorol_usuario')->references ('id')->on('permiso')->onDelete('restrict')->onUpdate('restrict');
-            $table->timestamps();
+            $table->foreign('permiso_id', 'fk_permisorol_permiso')->references ('id')->on('permiso')->onDelete('restrict')->onUpdate('restrict');
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
         });
     }
 

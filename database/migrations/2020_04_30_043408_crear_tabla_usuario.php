@@ -3,7 +3,7 @@
 // // <!-- //comando para crear una migracion en la terminal php artisan make:migration create_usuario_table o// 
 // // php artisan make:migration crear_tabla_usuario, cuando ejecutamos la creacion en eespañol el solo me va //
 // // crear los dos campos up y down pero sin ninguna yuda, ya que el no reconoce el parametro crear y tabla,//
-// // para que laravel me yude a crear la tabla con los parametros y los campos requeridos o estructura principal// 
+// // para que laravel me yude a crear la tabla con los parametros y los campos requeridos (en español) o estructura principal// 
 // // ejecutamos el sig codigo php artisan make:migration crear_tabla_usuario con los siguientes parametros --create=usuario  //
 // // para consultar una ayuda de como podemos utilizar artisan solo pasamos el comando php artisan // -->
 
@@ -22,9 +22,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsuarioTable extends Migration
+class CrearTablaUsuario extends Migration
 {
-    /**
+    /** 
      * Run the migrations.
      *
      * @return void
@@ -45,6 +45,9 @@ class CreateUsuarioTable extends Migration
             $table->string('password', 100);
             $table->string('nombre', 50)->unique();
             $table->timestamps();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
+            
             //con este comando puedo eliminar los datos que ya he introducido en la BD php artisan migrate:refresh//
         });
     }

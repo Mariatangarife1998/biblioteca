@@ -1,4 +1,0 @@
-php artisan:config 
-php artisan optimize //este cachea la informacion//
-php artisan config:cache
-php artisan route:list

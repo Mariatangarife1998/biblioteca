@@ -27,6 +27,8 @@ class CrearTablaUsurioRol extends Migration
              //el caracter boolean nos permite ver el estado de la caja de texto si esta en un o en cero//
              $table->boolean('estado');
             $table->timestamps();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
         });
     }
 

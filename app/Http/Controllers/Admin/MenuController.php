@@ -1,23 +1,22 @@
 <?php
-//php artisan make:controller PermisoController -r//
-//con el comando -r que significa resources crea uno de los metos que usualmente se utiliza para un CRUD//
-namespace App\Http\Controllers;
+//php artisan make:controller Admin/MenuController -r//
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidacionMenu;
 use Illuminate\Http\Request;
+use App\Models\Admin\Menu;
 
-class PermisoController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // se setea la variable slug con un dato en espesifico//
-    public function index($Nombre= false, $Slug=false)
+    public function index()
     {
-       // dd($Nombre);
-        return view('Permiso', compact('Nombre','Slug'));
-    
+        //
     }
 
     /**
@@ -25,9 +24,9 @@ class PermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function crear()
     {
-        return 'Sistema Crear';
+        return view('admin.menu.crear');
     }
 
     /**
@@ -36,10 +35,12 @@ class PermisoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //Guardar//
-    public function store(Request $request)
+    public function guardar(ValidacionMenu $request)
     {
-        //
+        Menu::create($request->all());
+        //(un revred) con el siguiente codigo pasamos un mensaje directamente//
+        //*el mensaje menu creado con exito lo redireccionamos con la vista crear.blade.php//
+        return redirect('admin/menu/crear')->with('mensaje', 'Menu creado con exito');
     }
 
     /**
@@ -48,7 +49,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function mostrar($id)
     {
         //
     }
@@ -59,7 +60,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editar($id)
     {
         //
     }
@@ -71,9 +72,9 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function actualizar(Request $request, $id)
     {
-        //
+        return redirect('admin/menu')->with('mensaje', 'Menu actualizado con exito');
     }
 
     /**
@@ -82,9 +83,8 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
     {
         //
     }
-
 }
